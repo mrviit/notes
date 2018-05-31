@@ -1,0 +1,10 @@
+*entityResult= lpEnt;
+AbtEntity* lpEnt= new AbtEntity(lpRtEnt);
+
+IRuntimeObject *lpRtEnt=0;
+detector->matchEntity(lpEntDef, lpTopWindows, &lpRtEnt,nNumberOfMatched);
+AbtDetectorFactory detectorFactory;
+IAbtDetector * detector = detectorFactory.getDectector(lpEntDef, 0);
+
+RuntimeObjectList *lpTopWindows= new RuntimeObjectList();
+AbtCore::instance()->getTopWindows(lpTopWindows);

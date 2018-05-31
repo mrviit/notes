@@ -1,0 +1,13 @@
+Actions name: using strings in a unique namespace
+
+Return values: using enum instead of macro
+
+
+/// du thua du lieu
+taRet = doTaskWithAction(lpAction, m_lpExecutedInformation, actionName);
+//E:\Source\ANG\LogicalLayer\AutoLib\Executor.cpp
+
+
+///
+AbtEntityDefinition* AbtDefinitionManager::getEntity(const char* name)
+//return a definition but the function name is get entity

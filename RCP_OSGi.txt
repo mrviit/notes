@@ -1,0 +1,67 @@
+OSGi (Open Service Gateway Initiative) is a Java framework for developing and deploying modular software programs and libraries. Each bundle is a tightly coupled, dynamically loadable collection of classes, jars, and configuration files that explicitly declare their external dependencies (if any).
+
+The OSGi specification describes a modular system and a service platform for the Java programming language that implements a complete and dynamic component model, something that does not exist in standalone Java/VM environments.
+
+OSGi is a set of specifications. Its core specification, defines a component and service model for Java. A practical advantage of OSGi is that every software component can define its API via a set of exported Java packages and that every component can specify its required dependencies.
+
+(The components and services can be dynamically installed, activated, de-activated, updated and de-installed.)
+(The OSGi specification has several implementations, for example Eclipse Equinox, Knopflerfish OSGi or Apache Felix.)
+(Eclipse Equinox is the reference implementation of the base OSGi specification. It is also the **runtime environment** on which Eclipse applications are based.)
+
+(The OSGi specification defines a bundle as the smallest unit of modularization, i.e., in OSGi a software component is a bundle. The Eclipse programming model typically calls them plug-in but these terms are interchangeable. A valid plug-in is always a valid bundle and a valid bundle is always a valid plug-in.)
+(A plug-in is a cohesive, self-contained unit, which explicitly defines its dependencies to other components and services. It also defines its API via Java packages.)
+
+(Technically OSGi plug-ins are .jar files with additional meta information. This meta information is stored in the META-INF/MANIFEST.MF file. This file is called the manifest file and is part of the standard Java specification and OSGi adds additional metadata to it.)
+
+(Bundle-Activator: Defines an optional activator class which implements the BundleActivator interface. An instance of this class is created when the plug-in gets activated. Its start() and stop() methods are called whenever the plug-in is started or stopped. An OSGi activator can be used to configure the plug-in during startup. The execution of an activator increases the startup time of the application, therefore this functionality should be used carefully.)
+
+(Bundle-ActivationPolicy: Setting this to lazy will tell the OSGi runtime that this plug-in should only be activated if one of its components, i.e. classes and interfaces are used by other plug-ins. If not set, the Equinox runtime does not activate the plug-in, i.e., services provided by this plug-in are not available.)
+
+The OSGi runtime ensures that all dependencies are present before it starts a plug-in. OSGi reads the manifest file of a plug-in during its installation. It ensures that all dependent plug-ins are also resolved and, if necessary, activates them before the plug-in starts.
+
+(Each plug-in has its own classloader. Access to restricted classes is not possible without using reflection.)
+(Unfortunately OSGi can not prevent you from using Java reflection to access these classes. This is because OSGi is based on the Java runtime which does not yet support a modularity layer.)
+
+/// Life cycle of plug-ins in OSGi
+With the installation of a plug-in in the OSGi runtime the plug-in is persisted in a local bundle cache. The OSGi runtime then tries to resolve its dependencies.
+If all required dependencies are resolved, the plug-in is in the RESOLVED status otherwise it stays in the INSTALLED status.
+In case several plug-ins exist which can satisfy the dependency, the plug-in with the highest valid version is used.
+If the versions are the same, the plug-in with the lowest unique identifier (ID) is used. Every plug-in gets this ID assigned by the framework during the installation.
+When the plug-in starts, its status is STARTING. After a successful start, it becomes ACTIVE.
+
+This life cycle is depicted in the following graphic: http://www.vogella.com/tutorials/OSGi/img/xosgi_livecycle10.png.pagespeed.ic.zzn3557oWr.webp
+
+/// What is a service?
+// https://www.knopflerfish.org/releases/current/docs/osgi_service_tutorial.html
+An OSGi service is a java object instance, registered into an OSGi framework with a set of properties. Any java object can be registered as a service, but typically it implements a well-known interface.
+
+//Registering a very simple object as a service
+Long      i     = new Long(20);
+Hashtable props = new Hashtable();
+props.put("description", "This an long value");
+bc.registerService(Long.class.getName(), i, props);
+
+Generally, services is the preferred method bundles should use to communicate between each other.
+
+Services are always accessed via ServiceReferences, which uniquely points to a service object.
+
+
+/////////OSGi console: http://www.vogella.com/tutorials/OSGi/article.html#using-the-osgi-console
+The OSGi console is like a command-line shell. In this console you can type a command to perform an OSGi action. This can be useful to analyze problems on the OSGi layer of your application.
+
+org.eclipse.equinox.console
+org.apache.felix.gogo.command
+org.apache.felix.gogo.runtime
+org.apache.felix.gogo.shell
+
+Telnet: -console 5555
+
+////modularity with OSGi
+An application consists of different parts, these are typically called software components or software modules.
+
+These components interact with each other via an Application Programming Interface (API). The API is defined as a set of classes and methods which can be used from other components. A component also has a set of classes and methods which are considered as internal to the software component.
+
+If a component uses an API from another component, it has a dependency to the other component, i.e., it requires the other component exists and works correctly.
+
+A component which is used by other components should try to keep its API stable. This avoids that a change affects other components. But it should be free to change its internal implementation.
+

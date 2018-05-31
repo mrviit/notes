@@ -1,0 +1,9 @@
+Install eclipse plugins:
+1. PDE
+2. e4
+3. NatTable
+4. 
+
+
+///Third bundles
+1. download jar

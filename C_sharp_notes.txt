@@ -1,0 +1,68 @@
+// using blocks
+try
+ {
+    stream = new FileStream("C:\\abc.txt", FileMode.CreateNew);
+    stream2 = new FileStream("C:\\abc2.txt", FileMode.CreateNew);
+ //Do some readding
+ }
+ finally
+ {
+    if (stream != null) stream.Close();
+    if (stream2 != null) stream2.Close();
+ }
+ 
+<=>
+
+using(var stream = new FileStream("C:\\abc.txt", FileMode.CreateNew))
+using(var stream2 = new FileStream("C:\\abc.txt", FileMode.CreateNew))
+{
+  //Do some readding
+}
+
+///////////////////
+
+var sw = Stopwatch.StartNew();
+DoSomething();
+sw.Stop();
+Console.WriteLine("Time elapsed: " + sw.ElapsedMilliseconds);
+
+/////////////////////
+
+// toán tử null
+input = input ?? "default"; //Nếu input là null thì set bằng default
+
+////////////////////
+
+// Khởi tạo object và collection
+Student student = new Student { Name = "Hoang", Age = 10};
+List<string> list = new List<string> { "string 1" , "string 2", "string 3" };
+
+// Kết hợp cả class và collection
+List<Student> list = new List<Student>
+{
+    new Student { Name = "Student 2", Age = 2},
+    new Student { Name = "Student 3", Age = 4}
+};
+
+// Extension method: thêm method cho một số class sealed, hoặc class từ các library khác
+// tạo 1 extenstion class, class này phải là static class, method cũng phải static, 
+// params đầu tiên truyền vào là class cần extention, với từ khóa this
+public static class StudentExtension {
+   public static void Print(this Student student) {
+      Console.WriteLine(student.ToString());
+   }
+} 
+//Sử dụng
+var student = new Student();
+student.Print();
+
+////////////////////// Predicate, Func, lambda
+
+////////////////// Linq 
+
+
+/// 
+ko thể dùng anonymous type làm kiểu trả về, hoặc parameter truyền vào cho 1 function.
+
+///// Delegates
+Delegate types are sealed—they cannot be derived from— and it is not possible to derive custom classes from Delegate

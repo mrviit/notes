@@ -1,0 +1,26 @@
+Import > General > Existing Projects into workspace
+update jdk/jre
+
+Right click on the project, Maven->Update Project Will Solve the Problem
+
+Right click on the project, Build Path -> Configure Build Path...
+Select the libraries tab. If Maven dependencies is not in the list, you have identified the problem.
+Close the dialog.
+Right click on the project, Maven -> Disable Maven Nature
+Right click on the project, Configure -> Convert to Maven Project.
+
+mvn dependency:tree
+mvn eclipse:eclipse
+mvn package
+
+mvn eclipse:clean
+mvn clean install
+mvn eclipse:eclipse
+
+update pom file for new bundles and features
+
+
+Failed to clean project ... -> close eclipse
+
+
+Eclipse install mvn: Pref > Maven > Installations

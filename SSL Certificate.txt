@@ -1,0 +1,7 @@
+SSL Certificate có thể được mua từ (được ký bởi) các CA (Certificate Authority): Comodo, Symantec, Geotrust, DigiCert, GlobalSign...
+
+Nếu không cần xác thực, tức là chỉ muốn an toàn cho dữ liệu khi được mã mật, có thể tự ký vào certificate của mình (SSL Certificate tự tạo, các trình duyệt sẽ không Trust loại cert này)
+
+SSL Certificate có một cặp khóa: một công khai (public key) và khóa riêng (private key). Các khoá này làm việc cùng nhau để thiết lập một kết nối được mã hóa. SSL Certificate cũng có chứa những thông tin của chứng chỉ / website.
+
+Để có được một SSL Certificate, bạn phải tạo một Certificate Signing Request (CSR) trên máy chủ của bạn, quá trình này sẽ tạo ra một khóa riêng và khóa công khai trên máy chủ. Bạn sẽ phải gửi CSR (có chứa khóa công khai (public key) ) này cho các tổ chức phát hành SSL Certificate (gọi là một Certificate Authority hay CA) . CA sử dụng các tập tin dữ liệu CSR để tạo ra một cấu trúc dữ liệu để phù hợp với khóa riêng (private key) mà bạn đang giữ. CA sẽ không bao giờ thấy/biết được khóa riêng của bạn. SSL Certificate sẽ được cung cấp sau một khoảng thời gian tuỳ vào từng loại SSL.

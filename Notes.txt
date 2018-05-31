@@ -1,0 +1,43 @@
+Address:
+\\192.168.167.193\Soft
+\\lgvn14698\BuildsLocationE\EPG\8.3\x64
+\\192.168.167.146\Software
+http://timesheet.logigear.com/Portal/TimeSheet
+
+\\data-server\LogiGearVN\TA Technical Documents\AutomationArchitecture
+
+
+
+C:\Program Files\LogiGear\TestArchitect\tahelp\Quick_Start_Guide\index.html
+
+C:\Program Files\Git\ReleaseNotes.html
+
+
+C:\Users\Public\LogiGear\TestArchitect\controller\requests\bejsmihr31vj\devices\bejsmikjbeel\beizrdnl63x1
+setting	test file name	C:\Users\Public\LogiGear\TestArchitect\controller\requests\bejsmihr31vj\devices\bejsmikjbeel\beizrdnl63x1\a(bej545y09zpw).rft
+
+
+> java -jar TARegisterServer.jar debug
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+quan tam den niem vui noi buon cua nguoi xung quanh

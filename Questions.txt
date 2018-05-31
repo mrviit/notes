@@ -1,0 +1,4 @@
+eng_Start: false if we have not yet open the GUI
+
+AbtDefinitionManager *lpDefManager = AbtAutomationHost::getInstance()->getDefinitionManager();
+//What is AbtDefinitionManager?	It contains methods to create, intake, parse definition from ta name and provide to Automation

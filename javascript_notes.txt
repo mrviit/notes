@@ -1,0 +1,58 @@
+JavaScript can "display" data in different ways:
+Writing into an HTML element, using innerHTML.
+Writing into the HTML output using document.write().
+Writing into an alert box, using window.alert().
+Writing into the browser console, using console.log().
+
+Comparing two JavaScript objects will always return false.
+
+There are 3 JavaScript methods that can be used to convert variables to numbers:
+The Number() method: If the number cannot be converted, NaN (Not a Number) is returned. can also convert a date to a number
+The parseInt() method: parses a string and returns a whole number. Spaces are allowed. Only the first number is returned
+The parseFloat() method
+These methods are not number methods, but global JavaScript methods.
+
+Number(new Date("2017-09-30")); // returns the number of milliseconds since 1.1.1970
+var x = Number.MAX_VALUE;	// MIN_VALUE, NEGATIVE_INFINITY, NaN, POSITIVE_INFINITY
+
+Number properties belongs to the JavaScript's number object wrapper called Number
+=> Number Properties Cannot be Used on Variables
+var x = 6;
+var y = x.MAX_VALUE; // y becomes undefined
+
+Arrays with named indexes are called associative arrays (or hashes).
+JavaScript does not support arrays with named indexes.
+In JavaScript, arrays always use numbered indexes. 
+If you use named indexes, JavaScript will redefine the array to a standard object.
+After that, some array methods and properties will produce incorrect results.
+var person = [];
+person["firstName"] = "John";
+person["lastName"] = "Doe";
+person["age"] = 46;
+var x = person.length;         // person.length will return 0
+var y = person[0];             // person[0] will return undefined
+
+Arrays use numbered indexes. Objects use named indexes. Arrays are a special kind of objects, with numbered indexes.
+
+// How to Recognize an Array
+Array.isArray(fruits);	// ECMAScript 5
+
+function isArray(x) {
+    return x.constructor.toString().indexOf("Array") > -1;
+	// x.constructor === Array;
+}
+
+fruits instanceof Array;
+
+Arrays methods: push, pop, shift, unshift, splice, slice
+
+delete fruits[0];           // Changes the first element in fruits to undefined
+
+
+In JavaScript, the first day of the week (0) means "Sunday", even if some countries in the world consider the first day of the week to be "Monday"
+JavaScript counts months from 0 to 11. January is 0. December is 11.
+
+
+Unlike other global objects, the Math object has no constructor. Methods and properties are static.
+
+The constructor property returns the constructor function for all JavaScript variables.

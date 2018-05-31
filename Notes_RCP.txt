@@ -1,0 +1,323 @@
+
+http://www.vogella.com/tutorials/EclipseFeatureProject/article.html
+
+An Eclipse feature project contains features. A feature describes a list of plug-ins and other features which can be seen as a logical unit, i.e., a set of related components. 
+
+The grouping of plug-ins into logical units makes it easier to handle a set of plug-ins. Instead of adding many individual plug-ins to your product configuration file, you can group them using features. That increases the visibility of your application structure.
+
+Features can be consumed by the Eclipse update manager, the build process and optionally for the definition of Eclipse products. Features can also be used as basis to define a launch configuration.
+
+A product can either be based on plug-ins or on features. This setting is done on the Overview tab of the product configuration file.
+
+A product does not perform automatic dependency resolution. If you add a feature to your product and want to add its dependencies, press the Add Required button.
+
+If you open the feature.xml file you can change the feature properties via a special editor.
+
+The Included Plug-ins tab allows you to change the included plug-ins in the feature. If you want to add a plug-in to a feature, use this tab. A frequent error of new Eclipse developers is to add it to the Dependencies tab.
+
+The Included Features tab allows you to include other features into this feature. Via the Dependencies tab you can define other features which must be present to use this feature.
+
+The Build tab is used for the build process and should include the feature.xml file.
+
+
+/////////
+
+http://www.vogella.com/tutorials/EclipseP2Update/article.html
+
+The Eclipse platform provides an installation and update mechanism called Eclipse p2 (short: p2 provisioning platform). This update mechanism allows you to update Eclipse applications and to install new functions.
+
+The update and installation of functions with p2 is typical based on feature projects (short: features). It is possible to update complete products or individual features. In the terminology of p2 these features are installable units.
+
+Installable units can be grouped into a p2 repository. A repository is defined via its URI and can point to a local file system or to a web server. A p2 repository is also called update site.
+
+During the export of an Eclipse application you can select the Generate p2 repository option in the Eclipse product export dialog. If you select this option, an update site iscreated in a sub-folder called repository of the export directory. Typically this directory is copied to a web server so users can install new functionality or upgrades using the p2 mechanism.
+
+The Eclipse update mechanism also supports file based update sites. File based update sites are useful for testing the update functionality. An update site contains an artifact and a metadata repository. == Required plug-ins for updates
+
+Table 1. Eclipse p2 plug-ins and features provide the non-user interface functionality of p2 (install this item to PDE: Equinox Target Components	3.13.0.v20170531-1133)
+Plug-in												Description
+org.eclipse.equinox.p2.core							Core p2 functionality.
+org.eclipse.equinox.p2.engine						The engine carries out the provisioning operation.
+org.eclipse.equinox.p2.operations					Layer over the core and engine API to describe updates as an atomic install.
+org.eclipse.equinox.p2.metadata.repository			Contains the definition of p2 repositories.
+org.eclipse.equinox.p2.core.feature					Feature containing the p2 bundles.
+//org.eclipse.e4.core.services
+To use the Eclipse update API you need to include these plug-ins as dependencies to your manifest file. And you	must add the feature to your product configuration file.
+
+/////////
+
+
+http://www.vogella.com/tutorials/EclipseExtensionPoint/article.html
+
+The information about the available extension points and the provided extensions are stored in a class of type IExtensionRegistry.
+
+The Eclipse platform reads the extension points and provided extensions once the plug-in is in the RESOLVED life cycle status as defined by the OSGi specification.
+
+In Eclipse applications you can use the dependency injection mechanism to get the IExtensionRegistry class injected.
+@Inject
+public void doSomething(IExtensionRegistry registry){
+    // do something
+    registry.getConfigurationElementsFor("yourextension");
+}
+
+In Eclipse 3.x based plug-ins you query for a certain extension via static methods of the Platform class. An example is listed in the following code.
+// The following will read all existing extensions
+// for the defined ID
+Platform.getExtensionRegistry().
+    getConfigurationElementsFor("yourextension");
+	
+	
+If you create your class directly via the IConfigurationElement class of the extension you are limited to classes which have a default constructor. To avoid this restriction you can use extension factories.
+
+To use a factory implement the interface IExecutableExtensionFactory in the class attribute of your extension point definition. The factory receives the configuration elements and can construct the required object.
+
+
+Add the following dependencies via the MANIFEST.MF file of your new plug-in:
+org.eclipse.core.runtime
+org.eclipse.e4.core.di
+
+/////////
+
+
+http://www.vogella.com/tutorials/EclipseRCP/article.html
+
+The release of Eclipse in version 4.x simplified and unified the Eclipse programming model which is now based on state-of-the-art technologies, like dependency injection and declarative styling via CSS files.
+
+http://www.vogella.com/tutorials/EclipseRCP/img/xarchitecture10.png.pagespeed.ic.9eoxaAjBkq.webp
+
+Extension-points define interfaces for other plug-ins to contribute functionality. Extensions contribute functionality to these interfaces.
+
+The e4 tools provide the tools to develop Eclipse 4 RCP applications. 
+The e4 spies are helpful to analysis Eclipse 4 RCP applications
+
+
+Parts are user interface components which allow you to navigate and modify data. Parts can be stacked or positioned next to each other depending on the container into which they are dropped. A part can have a drop-down menu, context menus and a toolbar. Parts can be classified as views and editors.
+
+Parts can be directly assigned to a window or a perspective. They can also be grouped and arranged via additional model elements, i.e., via part stack (Part Stack) or via part sash container (Part Sash Container) elements.
+
+A perspective is an optional container for a set of parts. Perspectives can be used to store different arrangements of parts. You can place perspectives in a perspective stack of the application model. Switching perspectives can be done via the part service provided by the Eclipse platform.
+
+
+During startup the Eclipse framework parses the available information about the application model (Application.e4xmi, persisted user changes and model contributions). It stores this information in Java objects during runtime. These objects are called model objects and at runtime they represent the attributes from the model elements.
+
+MApplication
+Describes the application object. All other model elements are contained in this object.
+
+MTrimmedWindow
+Similar to MWindow but it allows containing toolbars for the windows (via the TrimBars model elements).
+
+MAddon
+A self-contained component typically without user interface. It can register for events in the application life cycle and handle these events.
+
+Snippets
+Snippets can be used to pre-configure model parts which you want to create via your program. You can use the Eclipse framework to clone such a snippet and use the result object to attach it to the application model at runtime.
+
+
+Switch to the Configuration tab in the product editor and press the Add Recommended…​ button
+
+
+1>	Creating a plug-in project	
+2> 	Convert the generated plug-in into an Eclipse RCP application (Create a general project to host the product configuration file)
+3>	Create a product configuration file to the above general project
+4>	Configure the start levels: Switch to the Configuration tab in the product editor and press the Add Recommended…​ button
+5>	Create a feature project: Afterwards select the Included Plug-ins tab in the editor of the feature.xml file. Press the Add…​ button and include the plug-in into this feature.
+6>	Enter the feature as content into the product: Open your product file and change your product configuration file to use features. For this select the features option on the Overview tab of the product editor.
+7>	Create an application model file in the plug-in.
+
+To use classes from other plug-ins (their API) in the code of your plug-in you need to declare this in the MANIFEST.MF file.
+
+The Eclipse runtime creates objects for the Java classes referred by the application model. During this instantiation the Eclipse runtime scans the class definition for annotations. Based on these annotations the Eclipse framework performs the injection. Eclipse does not automatically perform dependency injection on objects which are created in your code with the new operator.
+
+The Eclipse framework tracks which object expressed a dependency to which key and type. If the value to which a key points changes, the Eclipse framework re-injects the new value in the object which expressed a dependency to the corresponding type. This means applications can be freed from having to install (and remove) listeners.
+
+The re-injection only works on methods and fields which are marked with @Inject. It will not work on parameters injected into constructors and methods which are marked with @PostConstruct, as these methods are only executed once.
+
+During startup of an Eclipse application the Eclipse runtime creates an object based on the IEclipseContext interface. This object is called the context or the Eclipse context.
+
+The context is similar to a Map data structure, in which objects can be placed under a certain key. The key is a String and in several cases the fully qualified class name is used as key. The value (to which the key points) can be injected into other objects. But unlike a map, the Eclipse context is hierarchical and can also dynamically compute values for requested keys.
+
+For certain model objects a local context is created. Such a context is associated with an application model object.
+
+The different context objects are connected to form a hierarchical tree structure based on the structure of your application model. The highest level in this hierarchy is the application context.
+
+Objects can be placed at different levels in the context hierarchy. This allows that the same key points to different objects in the hierarchy.
+
+14.3. Life cycle of the Eclipse context
+The Eclipse framework creates the context hierarchy based on the application model during the start process. By default, it places certain objects under predefined keys into the context, e.g., services to control the Eclipse framework functionality.
+
+The model objects and the created objects based on the class URI attributes are created by the Eclipse platform. For each model element with a custom context the Eclipse framework determines which objects should be available in the local context of the model object. If required, it also creates the required Java objects referred by the Class URI property of the model elements. This is for example the case if a part is visible to the user.
+
+The renderer framework is responsible for creating the local context of the UI related model elements. This framework allows you to define classes which are responsible for setting up the UI implementation of the model objects. A class responsible for a model element is called the renderer for this model element.
+
+For example, the ContributedPartRenderer class is the default renderer for part model objects. This renderer creates a Composite for every part and puts this Composite into the local context of the part.
+
+After the initial creation of the Eclipse context hierarchy, the framework or the application code can change the key-value pairs stored in the context. In this case objects which were created with the related Eclipse functionality (for example by the Eclipse dependency injection framework) are updated with the new values.
+
+During dependency injection for an object created by Eclipse, the Eclipse framework searches for a fitting object based on the specified key. The search starts in the local context associated with the application model object. If this key is not available, Eclipse continues to search in the parent context. This process continues until the main context has been reached.
+
+As you learn in later chapters the Eclipse context is not the only possible source of objects which can get injected. Other examples which are covered later are OSGi services, preferences, events and custom objects. The search happens (mostly) transparently for the caller of the injection.
+
+For the class references in the application model, the Eclipse framework creates the corresponding objects when needed. Such an object has access to its corresponding model object via dependency injection.
+For example, in the implementation of a part you can access the model information of a part via: @Inject MPart part;
+
+
+The Eclipse framework creates several objects in the context. These are:
+- model objects - contain the data of the application model
+- services - software components which are defined by the Eclipse platform or via the OSGi service registry
+- several other objects which have explicitly been added to the context
+
+
+The Eclipse platform places the part which is currently selected and the active shell into the IEclipseContext of the application object. The related keys are defined in the IServiceConstants interface.
+
+For example, the following method would allow you to track the current active part in another part.
+
+// tracks the active part
+@Inject
+@Optional
+public void receiveActivePart(
+    @Named(IServiceConstants.ACTIVE_PART) MPart activePart) {
+    if (activePart != null) {
+        System.out.println("Active part changed "
+                + activePart.getLabel());
+    }
+}
+To track the active shell use the IServiceConstants.ACTIVE_SHELL key.
+
+// tracks the active shell
+@Inject
+@Optional
+public void receiveActiveShell(
+    @Named(IServiceConstants.ACTIVE_SHELL) Shell shell) {
+    if (shell != null) {
+        System.out.println("Active shell (Window) changed");
+    }
+}
+
+
+Eclipse uses handlers to define actions which can be triggered via menu or toolbar entries. For a handler implementation class it is not necessary to use these qualifiers, as a handler is executed in the active context of the application.
+
+
+The visibility of menus, toolbars and their entries can be restricted via core expressions. You add the corresponding attribute in the application model to the ID defined by the org.eclipse.core.expressions.definitions extension point in the plugin.xml file.
+
+To add this extension point to your application, open the plugin.xml file and select the Dependencies tab in the editor. Add the org.eclipse.core.expressions plug-in in the Required Plug-ins section.
+
+Afterwards select the Extensions tab, press the Add button and add the org.eclipse.core.expressions.definitions extension. You define an ID under which the core expression can be referred to in the application model.
+
+
+Table 12. Key mapping
+Control 	Key	Mapping for Windows and Linux		Mapping for Mac
+M1			Ctrl									Command
+M2			Shift									Shift
+M3			Alt										Alt
+M4			Undefined								Ctrl
+These values are defined in the SWTKeyLookup class
+
+
+If there are several valid key bindings defined, the ContextSet class is responsible for activating one of them by default. ContextSet uses the binding context hierarchy to determine the lookup order. A binding context is more specific depending on how many ancestors are between it and a root binding context (the number of levels it has). The most specific binding context is considered first, the root one is considered last.
+
+You can also use the EContextService service which allows you to explicitly activate and deactivate a binding context via the activateContext() and deactivateContext() methods
+
+
+/////////
+
+http://www.vogella.com/tutorials/EclipseProductDeployment/article.html
+
+- A product configuration file (in a shorter form this is called: product ) defines the configuration of an Eclipse application. This includes icons, splash screen and the plug-ins (directly or via the usage of features) which are included in your application. 
+- A product always points to one application class. The default application for Eclipse RCP applications is the org.eclipse.e4.ui.workbench.swt.E4Application class.
+- A product is a development artifact and is not required at runtime.
+
+On the Overview tab of product editor you can start the product. Pressing the Synchronize link writes the relevant product configuration information into the plugin.xml file.
+
+Checklist for common export problems: 
+- Service could not be found or injected: Make sure that the bundle which provides the service has the Activate this plug-in when one of its classes is loaded _ flag set. Also make sure that the org.eclipse.equinox.ds bundle is started automatically with a _Start Level less than 4.
+- Application ID could not be found: Define a start level of 1 and set auto-start to true for the org.eclipse.core.runtime plug-in.
+
+
+A headless build is an automatic build without user interaction and without a graphical user interface. It can be triggered from the command line. 
+
+
+
+
+/////////
+
+
+http://www.vogella.com/tutorials/EclipsePlugin/article.html
+
+Menus, handlers and commands can be contributed to an Eclipse application via model fragments. To do this, you only need to know the ID of the element to which you want to contribute. You can use the model spy from the e4 tools project to identify the ID of the element you want to contribute too. With the correct ID you can create model fragments that contribute to the corresponding application model element. 
+
+
+/////////
+
+http://www.vogella.com/tutorials/EclipseFragmentProject/article.html
+
+A fragment is an optional attachment to another plug-in. This other plug-in is called the host plug-in. At runtime the fragment is merged with its host plug-in and for the runtime both projects are just one. Fragments are always optional for their host plug-in and the host plug-in doesn’t even know that it exists.
+
+
+////////
+
+
+http://www.vogella.com/tutorials/Eclipse4Modularity/article.html
+
+The initial structure of the application model is described in file called Application.e4xmi. Model contributions can be static or dynamic:
+- Static contributions are contributed via text files. These extensions are called fragments or model fragments.
+- Dynamically contributions are contributed via Java classes. These extensions are called processors or model processors.
+
+These model contributions are registered with the Eclipse framework extensions for the org.eclipse.e4.workbench.model extension point. This extension point is defined in the org.eclipse.e4.ui.workbench plug-in. The model contributions are read during startup and are used to build the runtime application model.
+
+A model fragment is a file which typically ends with the .e4xmi extension. It statically specifies model elements and the location in the application model to which it should be contributed.
+
+Fragments define the desired position of new model elements via the Position in List attribute. The following values are allowed:
+Table 1. Position in list
+Value						Description
+first						Positions the element on the beginning of the list.
+index:theIndex				Places the new model elements at position theIndex. Example: index:0
+before:theOtherElementsId	Places the new model elements before the model element with the ID theOtherElementsId.
+after:theotherelementsid	Places the new model elements after the model element with the ID theotherelementsid.
+fragments of independent plug-ins are processed in arbitrary order by the Eclipse runtime, therefore first or index might not always result in the desired outcome.
+
+If you want to contribute to an element of the application model you must specify the ID of the element to which you are contributing. In general it is good practice to always specify unique IDs in your application model. If not you may experience strange application behavior.
+
+The programming model of Eclipse 3.x primarily uses extension points to define contributions to the application. These extensions define new parts, new menus, etc. This approach is no longer used in Eclipse 4 RCP applications. All contributions are made via fragments or processors.
+
+Changes during runtime, are written back to the model. An example for such a change is that the user moves a part to a new container via drag and drop.
+If the RCP application is closed, theses changes are recorded and saved independently in a workbench.xmi file in the .metadata/.plugins/org.eclipse.e4.workbench folder.
+
+The Eclipse platform creates the runtime application model based on the initial application model (Application.e4xmi) and applies the model contributions to it (fragments and processors). User changes are applied afterwards. If these changes do not apply anymore, e.g. because the base model has changed, they will be skipped. The changes are applied to the model based on the IDs of the user interface component.
+
+
+In fragments you contribute to an existing model element which is defined via its ID. You also have to specify the Featurename to which you want to contribute. A Featurename is a direct link to the structure of the application model.
+
+
+Practise:
+In the MANIFEST.MF file, add the following plug-ins as dependencies to your contribute plug-in:
+org.eclipse.core.runtime
+org.eclipse.swt
+org.eclipse.jface
+org.eclipse.e4.core.di
+org.eclipse.e4.ui.workbench
+org.eclipse.e4.ui.di
+
+Use the fragment wizard from the e4 tools project to create a new model fragment. The wizard also adds the org.eclipse.e4.workbench.model extension to your contribute plug-in.
+
+
+MODEL PROCESSOR
+In the MANIFEST.MF, add the following plug-ins as dependencies to your contribute plug-in.
+org.eclipse.e4.ui.services
+org.eclipse.e4.core.contexts
+org.eclipse.e4.ui.model.workbench
+
+
+///MODEl FRAGMENT
+1. RCP_main_plugin
+2. RCP_model_fragment_plugin
+
+
+
+////////
+
+Add to *.product/Contents
+Missing plugin error: org.eclipse.equinox.ds, org.eclipse.equinox.concurrent, org.eclipse.equinox.event, org.eclipse.equinox.frameworkadmin, org.eclipse.equinox.frameworkadmin.equinox, 
+
+
+///CMD
+>rmdir . /s /q

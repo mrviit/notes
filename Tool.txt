@@ -1,0 +1,6 @@
+- Visual 2012
+- git svn
+
+
+- eclipse.
+- beyon compare

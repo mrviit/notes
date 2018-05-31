@@ -1,0 +1,306 @@
+System.out.println(Thread.currentThread().getStackTrace()[1]);
+
+System.out.println(Arrays.toString(array));
+System.out.println(Arrays.deepToString(deepArray));
+
+private static ImageDescriptor getImageDescriptor(String file) {
+    // assume that the current class is called View.java
+    Bundle bundle = FrameworkUtil.getBundle(View.class);
+    URL url = FileLocator.find(bundle, new Path("icons/" + file), null);	//icons/alt_window_32.gif"
+    return ImageDescriptor.createFromURL(url);
+}
+
+
+
+try(BufferedReader br = Files.newBufferedReader(getPath())) {
+
+
+
+ColumnViewerToolTipSupport.enableFor(viewer, ToolTip.NO_RECREATE);
+
+////
+Thread.currentThread().getStackTrace();	//is fine if you don't care what the first element of the stack is.
+new Throwable().getStackTrace();	//will have a defined position for your current method, if that matters.
+
+//get editor
+			IEditorPart editorPart = Activator.getDefault().getWorkbench()
+					.getActiveWorkbenchWindow().getActivePage()
+					.getActiveEditor();
+					
+					
+//
+final IMenuService service = (IMenuService)PlatformUI.getWorkbench().getService(IMenuService.class); //Eclipse 3.x 
+PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart().get	//Eclipse 3.x 
+HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView(viewId);
+page.findView("Views.ProjectTreeView");
+
+PluginA.getDefault().getBundle().getEntry("folder/some.dll")
+
+Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+BundleContext bundleContext = bundle.getBundleContext();
+
+FrameworkUtil.getBundle(YourClass.class).getBundleContext();
+IEclipseContext eclipseContext = EclipseContextFactory.getServiceContext(bundleContext);
+YourClass object = new YourClass();
+ContextInjectionFactory.inject(object, eclipseContext);
+
+E4Application.createDefaultContext();   //Cannot used
+
+IEclipseContext eclipseContext = E4Workbench.getServiceContext();	//encouterage
+
+IEclipseContext activeContext = application.getContext().getActiveLeaf();
+
+IEclipseContext eclipseContext = E4Workbench.getServiceContext();
+
+
+BundleContext bundleContext = FrameworkUtil.getBundle(ExecutionHandler.class).getBundleContext();
+ServiceReference<?> logser = bundleContext.getServiceReference(ProjectService.class);
+ProjectService projectService = (ProjectService)bundleContext.getService(logser);
+		
+//
+Add org.eclipse.osgi.services to your MANIFEST.MF and make sure org.eclipse.equinox.event is part of your Launch-Config and Product-Definition.
+BundleContext bundleContext = FrameworkUtil.getBundle(SenderView.class).getBundleContext();
+ServiceReference<EventAdmin> ref = bundleContext.getServiceReference(EventAdmin.class);
+EventAdmin eventAdmin = bundleContext.getService(ref);
+Map<String,Object> properties = new HashMap<String, Object>();
+properties.put("DATA", new Date());
+     
+Event event = new Event("viewcommunication/syncEvent", properties);
+eventAdmin.sendEvent(event);
+                
+event = new Event("viewcommunication/asyncEvent", properties);
+eventAdmin.postEvent(event);
+
+
+//
+IAction saveAction = ActionFactory.SAVE.create(window);
+fileMenu.add(saveAction)
+
+//
+Display.getDefault().asyncExec(new Runnable() {
+    @Override
+    public void run() {
+       PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("viewId"); //Eclipse 3.x 
+
+    }
+});
+
+
+//
+
+IEclipseContext ctx = E4Workbench.getServiceContext();	//E4Workbench is an internal class and you should not be using this
+        SnippetRepository repository = new SnippetRepository();
+        ctx.set(SnippetRepository.class, repository);
+
+//
+//
+@Inject static IEventBroker broker; 
+private void sendEvent() {
+broker.post(MyEventConstants.SOME_EVENT, payload)
+}
+
+On the receiver side, I have a method like:
+
+@Inject
+@Optional
+private void receiveEvent(@UIEventTopic(MyEventConstants.SOME_EVENT) Object payload) 
+
+///
+
+//ISaveablePart2
+@Override
+public int promptToSaveOnClose() {
+    boolean close = MessageDialog.openConfirm(
+            Display.getCurrent().getActiveShell(), "Close?", "Really?");
+
+    if(close)
+        return ISaveablePart2.YES;
+    return ISaveablePart2.CANCEL;
+}
+
+///
+
+partService.addPartListener(new IPartListener() {           
+   public void partVisible(MPart part) {                
+   }
+
+    public void partHidden(MPart part) {
+        partService.showPart(part, PartState.ACTIVATE);
+    }
+
+    public void partDeactivated(MPart part) {
+
+    }
+
+    public void partBroughtToTop(MPart part) {
+
+    }
+
+    public void partActivated(MPart part) {
+
+    }
+});
+
+///
+
+partService.addPartListener(new IPartListener() {           
+   public void partVisible(MPart part) {                
+   }
+
+    public void partHidden(MPart part) {
+        partService.showPart(part, PartState.ACTIVATE);
+    }
+
+    public void partDeactivated(MPart part) {
+
+    }
+
+    public void partBroughtToTop(MPart part) {
+
+    }
+
+    public void partActivated(MPart part) {
+
+    }
+});
+
+///close listener for ViewPart
+
+.getShell().addListener(SWT.CLOSE, new Listener() {
+
+      @Override
+      public void handleEvent(Event event) {
+         System.out.println("NOW !");
+      }
+   });
+   
+parent.addDisposeListener(new DisposeListener() {
+
+            @Override
+            public void widgetDisposed(DisposeEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+		
+///Close All Editors On Shutdown
+IWorkbench workbench = PlatformUI.getWorkbench(); //cannot use //Eclipse 3.x 
+final IWorkbenchPage activePage = workbench.getActiveWorkbenchWindow().getActivePage();
+ 
+workbench.addWorkbenchListener( new IWorkbenchListener()
+{
+    public boolean preShutdown( IWorkbench workbench, boolean forced )
+    {                            
+        activePage.closeEditors( activePage.getEditorReferences(), true);
+        return true;
+    }
+ 
+    public void postShutdown( IWorkbench workbench )
+    {
+ 
+    }
+});
+
+
+///
+
+Properties properties = new Properties();
+properties.put("equinox.transformerType", "xslt"); //$NON-NLS-1$ //$NON-NLS-2$
+registration = context.registerService(URL.class.getName(), context.getBundle().getEntry("/transform.csv"), properties); //$NON-NLS-1$
+
+///
+
+@Inject
+    @Optional
+    public void doEvent(@UIEventTopic(UIEvents.UILifeCycle.APP_STARTUP_COMPLETE) String tagToClose, 
+            MApplication app,
+            EModelService eModelService,
+            EPartService ePartService) {
+        MUIElement activePart = ePartService.getActivePart();
+        EPartService activePeServcie = null;
+        MPerspective activePerspective = null;
+        if (activePart instanceof MPart) {
+            activePeServcie = ((MPart) activePart).getContext().get(EPartService.class);
+            activePerspective = eModelService.getPerspectiveFor(activePart);
+        }
+
+        List<String> tags = new ArrayList<String>();
+        tags.add(tagToClose);
+        List<MPart> elementsWithTags = eModelService.findElements(app, null, MPart.class, tags);
+
+        for (MPart part : elementsWithTags) {
+            try {
+                System.out.println("Closing part " + part.toString());
+                EPartService peService = part.getContext().get(EPartService.class);
+                peService.switchPerspective(eModelService.getPerspectiveFor(part));
+                peService.hidePart(part);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+        if (activePart instanceof MPart && activePeServcie != null && activePerspective != null) {
+            activePeServcie.switchPerspective(activePerspective);
+        }
+
+    }
+	
+///
+
+ @PostConstruct
+    public void postConstruct(Composite parent, MWindow window) {
+
+        window.getContext().set(IWindowCloseHandler.class, new IWindowCloseHandler() {
+
+            @Override
+            public boolean close(MWindow window) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+            
+        });
+        window.getContext().set(ISaveHandler.class, new ISaveHandler() {
+
+            @Override
+            public boolean save(MPart dirtyPart, boolean confirm) {
+                // TODO Auto-generated method stub
+                part.setDirty(false);
+                return true;
+            }
+
+            @Override
+            public boolean saveParts(Collection<MPart> dirtyParts, boolean confirm) {
+                // TODO Auto-generated method stub
+                return true;
+            }
+
+            @Override
+            public Save promptToSave(MPart dirtyPart) {
+                // TODO Auto-generated method stub
+                return null;
+            }
+
+            @Override
+            public Save[] promptToSave(Collection<MPart> dirtyParts) {
+                // TODO Auto-generated method stub
+                return null;
+            }
+            
+        });
+		
+		
+////
+public class Activator implements BundleActivator {
+    public void start(BundleContext bundleContext) throws 
+        InjectorFactory.getDefault().
+           addBinding(IStringService.class).implementedBy(StringService.class);
+    }
+}
+
+//
+Display display = Display.getCurrent();
+Color blue = display.getSystemColor(SWT.COLOR_BLUE);
+
+part.setContributionURI("bundleclass://" 
+						                    + FrameworkUtil.getBundle(ItemViewerPart.class).getSymbolicName() 
+						                    + "/" + ItemViewerPart.class.getName());

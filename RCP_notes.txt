@@ -1,0 +1,124 @@
+
+The Eclipse platform is structured as a core runtime engine and a set of additional features that are installed as platform plug-ins.
+
+Eclipse 4 introduces innovative programming techniques such as dependency injection, application model, annotations and CSS styling.
+It reduces the complexity and effort to develop rich client applications.
+
+Eclipse platform is built on OSGi framework.
+In the Eclipse model, each plug-in works above Eclipse Platform.
+
+Eclipse platform is designed to serve as an open tools platform, it is architected so that its components could be used to build just about any client application.
+The minimal set of plug-ins needed to build a rich client application is collectively known as the Rich Client Platform.
+
+The Eclipse platform uses an abstract description, called the application model, to describe the structure of an application. 
+This application model contains the visual elements as well as some non-visual elements of the application.
+
+The visual parts are, for example, windows, parts (views and editors), menus, toolbars, etc.
+Examples for non-visual components are handlers, commands and key bindings.
+
+A command is a declarative description of an abstract action which can be performed, for example, save, edit or copy.
+A command is independent from its implementation details.
+Commands are used by the Handled MenuItem and Handled ToolItem model elements.
+The behavior of a command is defined via a handler.
+
+A handler model element points to a class (handler class) via the contributionURI property of the handler.
+This attribute is displayed as Class URI in the model editor.
+
+
+/////
+
+Eclipse Plugin framework
+
+What is a Workbench?
+when you open your eclipse, what you see is a workbench. 
+It consists of a menu bar, a tool bar, a page which is composed by one or more views/editors
+
+
+OSGi framework works is useful for developing Eclipse plugins
+OSGi framework architecture consists three conceptual layers
+
+
+///
+
+An eclipse plugin is an eclipse plugin. An RCP plugin is an eclipse 
+plugin with an application or product defined in its plugin.xml
+
+Run as an Eclipse Application will run an RCP app ... and allows you to 
+define which plugins are used.
+
+The Eclipse IDE itself is a bunch of plugins and an RCP app (the 
+workbench ide application)
+
+///
+RCP is a software consisting of the following components:
+- A core (microkernel), lifecycle manager
+- A standard bundling framework
+- A portable widget toolkit
+- File buffers, text handling, text editors
+- A workbench (views, editors, perspectives, wizards)
+- Data binding
+- Update manager
+
+RCP is a collection of lower-level frameworks
+RCP integrates these frameworks to provide a workbench into which we can contribute content
+This workbench has a specific, though highly-customizable, structure which defines the places where content can be added.
+
+A workbench defines where we can contribute menus, wizards, preferences, help content and much more. 
+A workbench also contains perspectives, which themselves can contain editors and views. 
+Our job as RCP developers is to create these UI elements and contribute them where we like.
+
+RCP is not just a UI framework, it’s a modular UI framework
+
+an Eclipse plug-in is an OSGi(-compliant) bundle, so there's also the plug-in/bundle activator
+
+Eclipse RCP provides an easy way to create desktop applications with industry standards. 
+
+
+//// Dependency Injection
+POJO means Plain Old Java Object: Basically a class with attributes and it's getters and setters.
+
+//
+The Eclipse Platform defines the set of frameworks and common services that collectively make up infrastructure required to support the use of Eclipse as a component model, as a Rich Client Platform (RCP) and as a comprehensive tool integration platform. 
+These services and frameworks include a standard workbench user interface model and portable native widget toolkit, 
+a project model for managing resources, automatic resource delta management for incremental compilers and builders, 
+language-independent debug infrastructure, and infrastructure for distributed multi-user versioned resource management.
+
+The Eclipse 4 Application Platform manages state and services using a set of contexts; this information is used for injection.
+Contexts are used as the sources for Dependency Injection.
+
+A context (a IEclipseContext) is a hierarchical key-value map. The keys are strings, often Java class names, and the values are any Java object. 
+Each context has a parent, such that contexts are linked together to form a tree structure. When a key is not found in a context, 
+the lookup is retried on the parent, repeating until either a value is found or the root of the tree has been reached.
+
+An e4 application is completely backed up by a domain model often called Workbench or Application Model but in contrast to e.g. the browser DOM 
+which only holds visual elements the e4 application model also holds other informations relevant to an e4 application (e.g. commands, handlers, ...). 
+This makes the e4 application model the center of each e4 application.
+
+/// RCP application model
+application model: an abstract description to describe the structure of an application, contains the visual elements as well as some non-visual elements of the application.
+
+The visual parts are, for example, windows, parts (views and editors), menus, toolbars, etc.
+Non-visual components are handlers, commands and key bindings.
+
+Each model element has attributes which describe its current state.
+The application model also expresses the relationship of the model elements via a hierarchy.
+
+The base of the application model is typically defined as a static file. By default, it is called Application.e4xmi.
+This file is read at application startup and is used to construct the initial application model. 
+(Changes made by the user are persisted and re-applied at startup.)
+(The application model is extensible, e.g., other plug-ins can contribute to it via model processors and model fragments.)
+
+Model elements can point to a class or to a static resource via a Uniform Resource Identifier (URI). For this purpose Eclipse defines two URI patterns (bundleclass vs platform). Eclipse instantiates the referred objects or resources in most cases lazily. For example, the classes for a part are instantiated when the part gets visible.
+
+Class URI attribute (bundleclass://) which points to a Java class via the bundleclass:// URI. This class provides the behavior of the part. The corresponding object is created by the Eclipse framework.
+
+During startup the Eclipse framework parses the available information about the application model (Application.e4xmi, persisted user changes and model contributions). It stores this information in Java objects during runtime. These objects are called model objects and at runtime they represent the attributes from the model elements.
+
+///OSGi
+OSGi is a set of specifications which, in its core specification, defines a component and service model for Java
+
+/// Event EventBroker  OSGi EventAdmin
+org.eclipse.e4.core.services
+org.eclipse.osgi.services
+
+There are two methods for declaring an interest in and responding to events. Dependency injection and subscribing through IEventBroker.

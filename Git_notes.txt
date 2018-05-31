@@ -1,0 +1,29 @@
+git rev-list --all | (
+    while read revision; do
+        git grep -F 'SWT.F2' $revision
+    done
+)
+
+///
+
+git log foo.rb | grep "bar"
+
+///
+
+git grep <regexp> $(git rev-list --all)
+
+///
+
+To find which commits and which files a string was added or removed in:
+
+git log -S'search string' --oneline --name-status
+
+To see the diff of that
+
+git log -S'search string' -p | grep 'search string' -C5
+
+You can also do a regex search by using -G instead of -S.
+
+// rename branch
+git branch -m <newname>		// rename the current branch
+git branch -m <oldname> <newname>		//rename a branch while pointed to any branch

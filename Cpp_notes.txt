@@ -1,0 +1,13 @@
+
+////// callback functions
+Functions used as arguments to another function are sometimes called callback functions.
+
+///
+typedef bool (*validateFcn)(int, int);
+<=>
+using validateFcn = bool(*)(int, int); // type alias In C++11
+
+/// std::function in C++11
+#include <functional>
+bool validate(int x, int y, std::function<bool(int, int)> fcn);
+// If there are no parameters, the parentheses can be left empty

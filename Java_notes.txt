@@ -1,0 +1,11 @@
+https://www.javaworld.com/article/2073352/core-java/simply-singleton.html?page=2
+
+InputStream  configJsonStream = ResourceLoader.class.getResourceAsStream("project.config.json");
+Files.copy(configJsonStream, projectDir.resolve("project.config.json"));
+
+Files.write( Paths.get(path), content.getBytes(), StandardOpenOption.CREATE);
+
+DirectoryDialog dirDialog = new DirectoryDialog(shell);	//FileDialog
+
+Activating annotation based null pointer access analysis
+Select Windows ▸ Java ▸ Compiler ▸ Errors/Warnings and select Enable annotation-based null analysis.

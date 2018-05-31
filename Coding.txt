@@ -1,0 +1,10 @@
+Không quan tâm đến coding convention, đặt tên biến vô tội vạ a1, a2, đọc hiểu chết liền
+Không quan tâm đến module hóa, chỉ cần code chạy được là ok, nhìn mớ code hỗn độn như đống rác
+Không có comment, code theo phong cách vô chiêu thắng hữu chiêu, biến ảo vô cùng, đọc code xong tức thổ huyết mà chết
+Không chịu review code, code xong vác ra chạy luôn, review code tốt có thể giảm thiểu được 20% bug
+Không nghĩ đến optimize code, không sử dụng cấu trúc dữ liệu phù hợp dẫn tới tốn memory, low performance
+Thích code như Công Phượng đá bóng, thể hiện, lạm dụng design pattern, dẫn tới xử lý đơn giản nhưng code như rồng bay phượng múa
+Thích Google search and Copy paste, mà không hiểu hết xử lý của code đó
+Thích cắm đầu code ngay, mà không nghiên cứu kĩ giải pháp, tìm hiểu requirement, làm gì cũng phải có “dạo đầu”
+
+==>> SOLID

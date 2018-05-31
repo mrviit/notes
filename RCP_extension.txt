@@ -1,0 +1,6 @@
+IExtensionRegistry
+IConfigurationElement
+IExecutableExtensionFactory
+
+The information about the available extension points and the provided extensions are stored in a class of type IExtensionRegistry.
+The Eclipse platform reads the extension points and provided extensions once the plug-in is in the RESOLVED life cycle status as defined by the OSGi specification.
