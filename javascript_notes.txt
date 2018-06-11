@@ -56,3 +56,33 @@ JavaScript counts months from 0 to 11. January is 0. December is 11.
 Unlike other global objects, the Math object has no constructor. Methods and properties are static.
 
 The constructor property returns the constructor function for all JavaScript variables.
+
+/// debugger keyword
+
+/// Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
+
+/// "use strict";
+
+///
+Object.defineProperty(obj, "x", {value:0, writable:false});
+
+/// get-only property
+var obj = {get x() {return 0} }; // obj.x
+
+/// var let const
+
+/// The call() and apply() methods are predefined JavaScript methods.
+
+/// Avoid global variables,  avoid new,  avoid  ==,  avoid eval()
+The eval() function is used to run text as code.
+
+/// Nested Functions / inner function -> Closures
+A closure is a function having access to the parent scope, even after the parent function has closed.
+var add = (function () {
+    var counter = 0;
+    return function () {counter += 1; return counter}
+})();
+add();
+
+/// Never break a return statement.
+

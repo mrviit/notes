@@ -1,3 +1,56 @@
 org.eclipse.equinox.event
-equinox
+equinox console
 felix
+
+<plugin id="org.apache.felix.gogo.shell"/>
+
+<plugin id="org.eclipse.e4.core.di"/>
+
+org.eclipse.e4.core.ui
+
+org.eclipse.equinox.concurrent
+
+org.eclipse.equinox.console.ssh
+
+org.eclipse.equinox.ds
+org.eclipse.equinox.util
+org.eclipse.equinox.event
+org.eclipse.osgi
+
+org.eclipse.equinox.console
+org.apache.felix.gogo.command
+org.apache.felix.gogo.runtime
+org.apache.felix.gogo.shell
+
+org.eclipse.e4.rcp
+org.eclipse.emf.ecore
+org.eclipse.emf.common
+
+org.eclipse.core.runtime
+org.eclipse.swt
+org.eclipse.e4.core.di
+org.eclipse.e4.ui.workbench
+org.eclipse.e4.ui.di
+org.eclipse.e4.core.di.extensions
+
+org.eclipse.osgi.services
+
+org.eclipse.jdt.ui
+
+      <plugin id="org.eclipse.emf.databinding"/>
+///org.eclipse.e4.core.di.InjectionException: java.lang.NullPointerException
+	
+	
+/// Do not import
+org.eclipse.e4.ui.workbench.addons.swt
+-> org.eclipse.e4.core.di.InjectionException: java.lang.NullPointerException
+
+/// Do not add dependency
+org.eclipse.e4.ui.workbench.addons.swt
+
+(
+org.eclipse.equinox.ds
+org.eclipse.equinox.event
+org.eclipse.equinox.util
+org.eclipse.e4.ui.workbench.addons.swt
+)

@@ -49,10 +49,26 @@ Services are always accessed via ServiceReferences, which uniquely points to a s
 /////////OSGi console: http://www.vogella.com/tutorials/OSGi/article.html#using-the-osgi-console
 The OSGi console is like a command-line shell. In this console you can type a command to perform an OSGi action. This can be useful to analyze problems on the OSGi layer of your application.
 
+org.eclipse.equinox.ds
+org.eclipse.equinox.util
+org.eclipse.equinox.event
+org.eclipse.osgi
+
 org.eclipse.equinox.console
 org.apache.felix.gogo.command
 org.apache.felix.gogo.runtime
 org.apache.felix.gogo.shell
+
+org.eclipse.e4.rcp
+org.eclipse.emf.ecore
+org.eclipse.emf.common
+
+org.eclipse.core.runtime
+org.eclipse.swt
+org.eclipse.e4.core.di
+org.eclipse.e4.ui.workbench
+org.eclipse.e4.ui.di
+org.eclipse.e4.core.di.extensions
 
 Telnet: -console 5555
 

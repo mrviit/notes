@@ -300,7 +300,15 @@ public class Activator implements BundleActivator {
 //
 Display display = Display.getCurrent();
 Color blue = display.getSystemColor(SWT.COLOR_BLUE);
+Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
 
 part.setContributionURI("bundleclass://" 
 						                    + FrameworkUtil.getBundle(ItemViewerPart.class).getSymbolicName() 
 						                    + "/" + ItemViewerPart.class.getName());
+											
+///
+
+@Named(ACTIVE_SHELL) Shell shell
+
+///
+EclipseContextFactory.getServiceContext(bundleContext)

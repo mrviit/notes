@@ -1,0 +1,8 @@
+.MPartStack {
+  swt-minimize-visible: true;
+  swt-maximize-visible: true;
+}
+
+.singlePartStack {
+  swt-single: true;
+}

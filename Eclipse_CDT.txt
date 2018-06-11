@@ -1,0 +1,13 @@
+http://wiki.eclipse.org/CDT/policy#Using_API_Tooling
+http://cdt-devel-faq.wikidot.com/
+
+/// http://wiki.eclipse.org/CDT/git
+Install CDT on top on eclipse or install a separate copy of CDT 9.2 to establish an API baseline.
+In Preferences set API baseline 
+Install Egit
+Install PDE/API Tools Environment Descriptions
+To get all other dependencies, use the target definition file by opening org.eclipse.cdt.target/cdt.target then click Set as Target Platform on the top right.
+
+Setup Git credentials ...
+
+Clone the repo.

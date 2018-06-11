@@ -1,0 +1,2 @@
+//HTML Validation
+<input id="demo" type="number" min="5" max="10" step="1"/>
