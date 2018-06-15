@@ -1,9 +1,11 @@
+http://www.vogella.com/tutorials/EclipseShortcuts/article.html
+
 Ctrl+Shift+T for finding class even from jar
 Ctrl+Shift+R for finding any resource (file) including config XML files
 Ctrl+1 for quick fix
 Ctrl+Shift+o for organize imports
 
-Ctrl+o for quick outline going quickly to method
+Ctrl+o (press again) for quick outline going quickly to method. shows you an structured overview of the file you are editing
 Alt+right and Alt+left for going back and forth while editing.
 Alt+Shift+W for show in package explorer
 Ctrl+Shift+Up and down for navigating from member to member (variables and methods)
@@ -33,3 +35,22 @@ Ctrl+F11 to run the last application launched
 F11 to debug the last application launched
 
 Ctrl+Alt+J: join lines
+
+Ctrl+J / Ctrl+K: Incremental Find / search in the current active editor for a text which is displayed in the status line as depicted by the following screenshot
+
+Ctrl+3
+Ctrl+E
+Ctrl+F7 : Shortcut for switching views.
+Ctrl+F8 : Shortcut for switching perspectives
+Ctrl+Q : Go to editor and the position in this editor where the last edit was done
+
+Ctrl+F11 : Run last launched
+F11 : Run last launched in debug mode
+Ctrl+Alt+B : Skip all breakpoints. 
+
+Ctrl+M : Maximize active editor or view
+
+Alt+Shift+Z : Wrap the select block of code into a block, e.g. try/catch.
+
+Alt+Shift ↑ / ↓ : Select the previous / next syntactical element
+Alt+Shift ↑ / ↓ / ← / →

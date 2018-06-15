@@ -77,6 +77,7 @@ var obj = {get x() {return 0} }; // obj.x
 The eval() function is used to run text as code.
 
 /// Nested Functions / inner function -> Closures
+// Closure là một function đi kèm với envirment của nó
 A closure is a function having access to the parent scope, even after the parent function has closed.
 var add = (function () {
     var counter = 0;

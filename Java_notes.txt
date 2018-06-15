@@ -9,3 +9,9 @@ DirectoryDialog dirDialog = new DirectoryDialog(shell);	//FileDialog
 
 Activating annotation based null pointer access analysis
 Select Windows ▸ Java ▸ Compiler ▸ Errors/Warnings and select Enable annotation-based null analysis.
+
+
+///Interface trong Java 8, giới thiệu Default Method và Static Method
+
+/// 
+Functional Interface là cách gọi khác của SAM(Single Abstract Method) interface, tức là những interface chỉ có duy nhất một method, ví dụ như Runnable, Callable, Comparator, ActionListener, FileFilter, PropertyChangeListener ... Từ Java8, một annotation mới @FunctionalInterface cũng đã được giới thiệu để đánh dấu một interface nào đó là Functional Interface. @FunctionalInterface annotation là tiện ích để tránh việc vô tình thêm vào các phương thức trong Functional Interface.
