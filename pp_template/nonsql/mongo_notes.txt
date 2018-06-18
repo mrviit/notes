@@ -1,0 +1,18 @@
+/// Customize the Prompt
+cmdCount = 1;
+prompt = function() {
+             return (cmdCount++) + "> ";
+         }
+		 
+		 
+/// Use an External Editor in the mongo Shel
+export EDITOR=vim
+mongo
+
+-> Once in the mongo shell, you can edit with the specified editor by typing edit <variable> or edit <function>
+
+/// Change the mongo Shell Batch Size
+in the mongo shell, if the returned cursor is not assigned to a variable using the var keyword, 
+then the cursor is automatically iterated up to 20 times to print up to the first 20 documents that match the query.
+
+DBQuery.shellBatchSize = 10;
