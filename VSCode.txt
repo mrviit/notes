@@ -1,0 +1,2 @@
+Install Node.js, available in $PATH
+npm install -g yo generator-code
