@@ -1,3 +1,5 @@
+http://www.vogella.com/tutorials/EclipsePlugin/article.html
+
 /// What are run configurations?
 A run configuration defines the environment which will be used to execute a generic launch.
 For example, it defines arguments to the Java virtual machine (VM), plug-in (classpath) dependencies, etc.
@@ -5,3 +7,5 @@ For example, it defines arguments to the Java virtual machine (VM), plug-in (cla
 To pass system properties to your Eclipse application, you can add launch parameters using the -D switch. 
 As example, if you add the argument -Dmy.product.loglevel=INFO, 
 you can get the "INFO" value with System.getProperties("my.product.loglevel").
+
+If you are developing Eclipse RCP applications, the launch configuration is created based on the product configuration file.

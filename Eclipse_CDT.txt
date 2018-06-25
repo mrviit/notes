@@ -11,3 +11,8 @@ To get all other dependencies, use the target definition file by opening org.ecl
 Setup Git credentials ...
 
 Clone the repo.
+
+
+
+////
+Check if your run configuration includes the -consoleLog

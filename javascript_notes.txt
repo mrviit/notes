@@ -71,7 +71,14 @@ var obj = {get x() {return 0} }; // obj.x
 
 /// var let const
 
-/// The call() and apply() methods are predefined JavaScript methods.
+/// The bind(), call() and apply() methods are predefined JavaScript methods.
+var printHocsinhName = Hocsinh.printName.bind(Hocsinh);
+printHocsinhName(); 
+
+var printHocsinhName = Hocsinh.printName;
+printHocsinhName.call(Hocsinh);
+
+Hocsinh.printName.call(window);  
 
 /// Avoid global variables,  avoid new,  avoid  ==,  avoid eval()
 The eval() function is used to run text as code.
@@ -87,3 +94,7 @@ add();
 
 /// Never break a return statement.
 
+///
+var myObject = {10: 'test1'}
+myObject.10;             //Throw Error
+myObject['10'];          //test1
