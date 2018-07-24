@@ -32,5 +32,7 @@ git branch -m <oldname> <newname>		//rename a branch while pointed to any branch
 git init
 git add README.md
 git commit -m "first commit"
+
 git remote add origin https://github.com/mrviit/notes.git
 git push -u origin master
+

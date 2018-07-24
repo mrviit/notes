@@ -9,6 +9,8 @@ Close the dialog.
 Right click on the project, Maven -> Disable Maven Nature
 Right click on the project, Configure -> Convert to Maven Project.
 
+
+
 mvn dependency:tree
 mvn eclipse:eclipse
 mvn package

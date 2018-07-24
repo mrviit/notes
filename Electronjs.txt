@@ -1,0 +1,15 @@
+npm install electron-prebuilt -g
+
+# To install globally
+$ sudo npm install -g electron
+# Or install local
+$ npm install electron
+npm install -g electron
+
+npm install --save-dev electron-packager
+
+mkdir mdpreview
+cd mdpreview
+npm init -y
+
+npm install --save-dev electron

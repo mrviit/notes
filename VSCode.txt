@@ -1,2 +1,27 @@
 Install Node.js, available in $PATH
 npm install -g yo generator-code
+
+/// https://code.visualstudio.com/docs/extensions/developing-extensions
+This is what happens when pressing F5:
+1) .vscode/launch.json instructs to first run a task named npm.
+2) .vscode/tasks.json defines the task npm as a shell command to npm run compile.
+3) package.json defines the script compile as tsc -watch -p ./
+4) This eventually invokes the TypeScript compiler included in node_modules, which generates out/extension.js and out/extension.js.map.
+5) Once the TypeScript compilation task is finished, the code --extensionDevelopmentPath=${workspaceFolder} process is spawned.
+6) The second instance of VS Code is launched in a special Extension Host mode and it searches for an extension at ${workspaceFolder}.
+
+
+/// https://code.visualstudio.com/docs/extensionAPI/patterns-and-principles
+Visual Studio Code will not install your extension's dependencies when a user installs it, so you must npm install before publishing. The extension's publishing package will contain all of its dependencies within. You can run vsce ls to list all the files that vsce will include in the package.
+
+////
+let clientOptions: LanguageClientOptions = {
+  outputChannelName: 'XYZ Language Server',
+};
+
+//
+// Create a connection for the server. The connection uses 
+// stdin / stdout for message passing
+let connection: IConnection = createConnection(process.stdin, process.stdout);
+connection.console.log(`Console test.`);
+

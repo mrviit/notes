@@ -1,2 +1,14 @@
 http://www.vogella.com/tutorials/EclipsePlatformDevelopment/article.html
 
+1) Install the development tools (File>Import...>Install>Install Software Items from File):
+http://git.eclipse.org/c/platform/eclipse.platform.ui.git/plain/releng/org.eclipse.ui.releng/platformUiTools.p2f
+
+2) Get source code: https://projects.eclipse.org/projects/eclipse.jdt/developer
+Go to the Gerrit Eclipse homepage https://git.eclipse.org/r/ and select the Projects > List menu entry. This opens the Project search page. Here you can search for the project you want to contribute to.
+
+3) Clone the repository via the Eclipse IDE
+File ▸ Import…​ ▸ Git ▸ Projects from Git ▸ Clone URI.
+Enter the URL from the Gerrit webpage in the first line of the wizard
+
+4) Installing Execution Environment Descriptions
+Help > Install new software > API Tools Execution Environment Descriptions

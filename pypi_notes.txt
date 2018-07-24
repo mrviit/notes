@@ -1,0 +1,98 @@
+https://books.sonatype.com/nexus-book/3.0/reference/install.html
+From starting version 3.x.x-xx, navigate to bin directory ,run nexus.exe /run and wait until you see the log message
+
+localhost:8081	#creditions admin/admin123
+
+nexus /install #rem have to execute the command as an administrator.
+
+pip search/download foo -i http://localhost:8081/repository/pipi/
+*** pip search -i Repo_URL + "/pypi" package_name		*********************
+pip install -U -i Repo_URL/simple --target localPath package_name
+
+1) create a blob
+2) create a repo: pypi
+
+On windows pip.exe looks for "pip.ini" in this order:
+
+C:\ProgramData\pip\pip.ini/pip.conf
+C:\Users\<username>\pip\pip.ini
+C:\Users\<username>\AppData\Roaming\pip\pip.ini
+%APPDATA%\pip\pip.ini
+
+///
+setuptools
+python setup.py sdist
+python setup.py sdist register upload
+python setup.py sdist upload -r mypipi
+
+setup.py clean --all
+
+
+///
+twine register
+twine upload
+
+///
+pip install -U pip
+python -m pip install -U pip
+pip install --index-url http://index.example.com/simple/ SomeProject
+
+pip install --install-option="--prefix=$PREFIX_PATH" package_name --ignore-installed
+
+pip install  --target=. calahary
+pip install --no-binary :all: my_package
+
+///
+
+import pip
+sorted(["%s==%s" % (i.key, i.version) for i in pip.get_installed_distributions()])
+
+# Create a virtual environment
+$ cd /tmp
+$ virtualenv test_env  #--no-site-packages --system-site-packages
+# python3 -m virtualenv env
+# You should exclude your virtualenv directory from your version control system using .gitignore or similar.
+
+#use pip in test_env/Scripts or call the activate/deactivate
+$ py -m pip --version
+# where/which python
+pip install requests
+
+$ py -m pip install --upgrade pip  # make sure that pip is up-to-date
+
+python3/py -m pip install --user --upgrade pip
+python3/py -m pip --version
+
+py -m pip install --user virtualenv
+
+$ pip show -f <package>
+
+
+///////
+Steps to Create a Python Package
+Working with Python packages is really simple. All you need to do is:
+
+Create a directory and give it your package's name.
+Put your classes in it.
+Create a __init__.py file in the directory
+
+
+///
+pip list
+pip freeze
+
+//// Installing python module within code
+import pip
+
+def install(package):
+    pip.main(['install', package])
+	#pip.main(['install', 'pip==7.1.0'])
+
+# Example
+if __name__ == '__main__':
+    install('argh')
+	
+	
+///
+with open("README.md", "r") as fh:
+    long_description = fh.read()

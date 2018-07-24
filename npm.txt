@@ -1,0 +1,7 @@
+npm i npm@latest -g
+npm audit fix
+
+npm i --save file-matcher
+npm install --save fs-extra
+
+npm i typings -g
