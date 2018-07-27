@@ -1,0 +1,6 @@
+const renameJsonData = JSON.parse(renameJsonDocContent);
+
+var jsonConfigContent = require('../config.json');
+
+////
+

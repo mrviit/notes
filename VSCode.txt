@@ -1,5 +1,6 @@
 Install Node.js, available in $PATH
 npm install -g yo generator-code
+yo code
 
 /// https://code.visualstudio.com/docs/extensions/developing-extensions
 This is what happens when pressing F5:
@@ -25,3 +26,34 @@ let clientOptions: LanguageClientOptions = {
 let connection: IConnection = createConnection(process.stdin, process.stdout);
 connection.console.log(`Console test.`);
 
+
+
+////
+let filePath = vscode.Uri.file(path.join(context.extensionPath, 'index.html')).toString();	//error
+let filePath = join(__dirname, 'index.html');
+panel.webview.html = fs.readFileSync(filePath, 'utf8');
+//
+vscode.workspace.openTextDocument(filePath).then((textDoc) => {
+            const txt = textDoc.getText();
+        });
+//
+vscode.workspace.openTextDocument().then(doc => vscode.window.showTextDocument(doc))
+
+///
+const editor = vscode.window.activeTextEditor;
+editor.viewColumn
+
+////
+vscode.window.showOpenDialog({
+            canSelectFiles: true,
+            canSelectFolders: false,
+            canSelectMany: true,
+            filters: {
+                ["Text files"]: ["txt"],
+                ["All files"]: ["*"],
+                ["Some File"]: ["(*.sf)|*.sf|All Files (*.*)|*.*"]
+            }
+        }).then(uris => {
+            if (!uris || !uris[0]) { return; }
+            console.log(`uris: ${uris[0].fsPath}`);
+        });
