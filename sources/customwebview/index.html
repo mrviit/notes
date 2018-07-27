@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <script>
+        `${myscript}`
+    </script>
+</head>
+
+<body>
+
+    <form>
+    </form>
+    <h1>This is a Heading</h1>
+    <p id="demo">demo</p>
+    <p>settings ${settings.case_sensitive}.</p>
+    <p>dependency ${dependency}.</p>
+    <p>report ${report}.</p>
+    <p>run_mode ${run_mode}.</p>
+    <p>web ${web}.</p>
+    <button onclick="selectFolder()">Save Config</button>
+    <input type="button" value="Select" onclick="getFolder()">
+    <br />
+    <div class="row">
+        <div class="column">
+            <div id="selectSource">
+                <input type="file" name="folderName" id="folderName" class="inputfile" webkitdirectory />
+                <label for="folderName">
+                    <i class="fa fa-folder-open-o"></i>&nbsp; Select a Source Directory</label>
+            </div>
+        </div>
+        <div class="column">
+            <input type="text" id="sourceDirPath" class="myInput" />
+        </div>
+    </div>
+
+    <script>
+        function selectFolder(e) {
+            // for (var i = 0; i < e.target.files.length; i++) {
+            //     var s = e.target.files[i].name + '\n';
+            //     s += e.target.files[i].size + ' Bytes\n';
+            //     s += e.target.files[i].type;
+            //     document.getElementById("demo").innerHTML = s;
+            // }
+            document.getElementById("demo").innerHTML = `${aaa} + ${bbb}`
+            // document.getElementById("demo").innerHTML = document.getElementById('flup').value.substring(0,document.getElementById('flup').value.lastIndexOf('\\'));
+        }
+    </script>
+    <script>
+        $("#folderName").change(function () {
+            var sourceVal = document.getElementById("folderName").files[0].path;
+            $("#sourceDirPath").innerHTML(sourceVal);
+        });
+    </script>
+    <script>
+        function getfolder(e) {
+            var files = e.target.files;
+            var path = files[0].webkitRelativePath;
+            var Folder = path.split("/");
+            document.getElementById("demo").innerHTML = Folder[0];
+        }
+    </script>
+</body>
+
+</html>

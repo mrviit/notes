@@ -1,0 +1,29 @@
+{
+	"settings":{
+		"case_sensitive": "1",
+		"element_wait": "20",
+		"window_wait": "20"
+	},
+	"dependency":[
+		
+	],
+
+	"report":{
+		
+	},
+	
+	"run_mode" : "desktop",
+	"web" : {
+		"executable_path" : "F:/python/Helium/drivers/chromedriver.exe",
+	
+		"platform" : "chrome",
+		
+		"remote" : {
+			"url": "http://127.0.0.1:4444/wd/hub"
+		},
+		"desired_capabilities": {
+			"browserName": "Chrome",
+			"platform" : "ANY"
+		}
+	}
+}
