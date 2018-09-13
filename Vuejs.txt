@@ -1,0 +1,112 @@
+/// directive
+A directive’s job is to reactively apply side effects to the DOM when the value of its expression changes.
+
+ v-once
+ 
+ rawHtml	// cannot use v-html to compose template partials
+ 
+/// computed property
+
+
+///
+
+new Vue({
+	el: "",
+	template: ...htmlstring...,
+	data: {
+		styleObject: {},
+		classObject: {}
+	},
+	methods: ...,
+	computed: {},
+	watch: ...,
+	created: ...,
+	props: ...
+})
+
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+<blog-post title="My journey with Vue"></blog-post>
+
+new Vue({
+  el: '#blog-post-demo',
+  data: {
+    posts: [
+      { id: 1, title: 'My journey with Vue' },
+      { id: 2, title: 'Blogging with Vue' },
+      { id: 3, title: 'Why Vue is so fun' }
+    ]
+  }
+})
+
+<blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:title="post.title"
+></blog-post>
+
+
+///
+
+v-model directive to create two-way data bindings on form input, textarea, and select elements
+v-bind:class
+v-bind:style
+
+///
+v-if is “real” conditional rendering because it ensures that event listeners and child components inside the conditional block are properly destroyed and re-created during toggles.
+v-if is also lazy: if the condition is false on initial render, it will not do anything - the conditional block won’t be rendered until the condition becomes true for the first time.
+
+
+Inside v-for blocks we have full access to parent scope properties.
+
+When they exist on the same node, v-for has a higher priority than v-if
+
+/// caveat 
+1)
+vm.items[indexOfItem] = newValue
+->
+Vue.set(vm.items, indexOfItem, newValue)	// alias  vm.$set instance method
+vm.items.splice(indexOfItem, 1, newValue)
+
+2)
+vm.items.length = newLength
+->
+vm.items.splice(newLength)
+
+3) 
+vm.b = 2	// add b
+->
+Vue.set(object, key, value)
+
+4)
+Object.assign(vm.userProfile, {
+  age: 27,
+  favoriteColor: 'Vue Green'
+})
+->
+vm.userProfile = Object.assign({}, vm.userProfile, {
+  age: 27,
+  favoriteColor: 'Vue Green'
+})
+
+
+////
+alert(event.target.tagName)
+
+<button v-on:click="warn('Form cannot be submitted yet.', $event)">
+  Submit
+</button>
+
+
+///
+<input
+  v-bind:value="searchText"
+  v-on:input="searchText = $event.target.value"
+>
+
+<custom-input
+  v-bind:value="searchText"
+  v-on:input="searchText = $event"
+></custom-input>

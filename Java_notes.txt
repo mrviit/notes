@@ -15,3 +15,19 @@ Select Windows ▸ Java ▸ Compiler ▸ Errors/Warnings and select Enable annot
 
 /// 
 Functional Interface là cách gọi khác của SAM(Single Abstract Method) interface, tức là những interface chỉ có duy nhất một method, ví dụ như Runnable, Callable, Comparator, ActionListener, FileFilter, PropertyChangeListener ... Từ Java8, một annotation mới @FunctionalInterface cũng đã được giới thiệu để đánh dấu một interface nào đó là Functional Interface. @FunctionalInterface annotation là tiện ích để tránh việc vô tình thêm vào các phương thức trong Functional Interface.
+
+///spread syntax
+
+spread operator ... cho phép chuyển đổi một chuỗi thành nhiều argument (khi gọi hàm), hoặc nhiều phần tử (với array)
+const max = (arr) => Math.max(...arr);
+
+const one = ['a', 'b', 'c']
+const two = ['d', 'e', 'f']
+const three = ['g', 'h', 'i']
+
+const result = [...one, ...two, ...three]
+
+///Object.create(null)
+
+/// Get the string representation of a DOM node
+document.documentElement.innerHTML

@@ -47,13 +47,16 @@ pip install --no-binary :all: my_package
 import pip
 sorted(["%s==%s" % (i.key, i.version) for i in pip.get_installed_distributions()])
 
+$ pip install virtualenv
 # Create a virtual environment
 $ cd /tmp
 $ virtualenv test_env  #--no-site-packages --system-site-packages
-# python3 -m virtualenv env
+# python -m virtualenv env
+# python -m venv pytest-env
 # You should exclude your virtualenv directory from your version control system using .gitignore or similar.
 
 #use pip in test_env/Scripts or call the activate/deactivate
+$ \path\to\env\Scripts\activate.bat
 $ py -m pip --version
 # where/which python
 pip install requests
@@ -66,6 +69,7 @@ python3/py -m pip --version
 py -m pip install --user virtualenv
 
 $ pip show -f <package>
+pip show ipython
 
 
 ///////
@@ -96,3 +100,6 @@ if __name__ == '__main__':
 ///
 with open("README.md", "r") as fh:
     long_description = fh.read()
+	
+	
+	

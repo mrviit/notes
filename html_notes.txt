@@ -1,0 +1,4 @@
+///http://wilsonpage.co.uk/preventing-layout-thrashing/
+window.requestAnimationFrame
+
+document.documentElement.innerHTML

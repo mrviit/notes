@@ -1,0 +1,65 @@
+box-sizing: border-box
+
+/// show table number
+table tr {
+            counter-increment: rowNumber;
+			//counter-reset: Serial;
+        }
+
+table tr td:first-child::before {
+            content: counter(rowNumber);
+            min-width: 1em;
+            margin-right: 0.5em;
+        }
+		
+///
+body
+{
+    counter-reset: Serial;           /* Set the Serial counter to 0 */
+}
+
+table
+{
+    border-collapse: separate;
+}
+
+tr td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: "Serial is: " counter(Serial); /* Display the counter */
+}
+
+///
+/* Zebra striping */
+	tr:nth-of-type(odd) { 
+		background: #eee; 
+	}
+	
+///
+@import url("reset.css");
+
+///
+Add a container element (like <div>) with overflow-x:auto around the <table> element to make it responsive
+
+
+///
+.tab-button {
+  padding: 6px 10px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: #f0f0f0;
+  margin-bottom: -1px;
+  margin-right: -1px;
+}
+.tab-button:hover {
+  background: #e0e0e0;
+}
+.tab-button.active {
+  background: #e0e0e0;
+}
+.tab {
+  border: 1px solid #ccc;
+  padding: 10px;
+}

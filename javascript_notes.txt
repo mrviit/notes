@@ -98,3 +98,45 @@ add();
 var myObject = {10: 'test1'}
 myObject.10;             //Throw Error
 myObject['10'];          //test1
+
+///execution context: global execution context > Function execution context
+When the program calls a function. A few steps:
+1) JavaScript creates a new execution context, a local execution context
+2) That local execution context will have its own set of variables, these variables will be local to that execution context.
+3) The new execution context is thrown onto the execution (call) stack. Think of the execution stack as a mechanism to keep track of where the program is in its execution
+
+When a function ends, the following happens:
+1) The local execution contexts pops off the execution stack
+2) The functions sends the return value back to the calling context. The calling context is the execution context that called this function, it could be the global execution context or another local execution context. It is up to the calling execution context to deal with the return value at that point. The returned value could be an object, an array, a function, a boolean, anything really. If the function has no return statement, undefined is returned.
+3) The local execution context is destroyed. All the variables that were declared within the local execution context are erased. 
+
+When a function gets declared, it contains a function definition and a closure.
+==>> The closure (scope) is a collection of all the variables in scope at the time of creation of the function.
+A closure is the combination of a function and the lexical environment within which that function was declared.
+For every closure we have three scopes: Local Scope ( Own scope), Outer Functions Scope, Global Scope
+///
+
+function makeSizer(size) {
+  return function() {
+    document.body.style.fontSize = size + 'px';
+  };
+}
+
+var size12 = makeSizer(12);
+var size14 = makeSizer(14);
+var size16 = makeSizer(16);
+
+document.getElementById('size-12').onclick = size12;
+document.getElementById('size-14').onclick = size14;
+document.getElementById('size-16').onclick = size16;
+
+///Array from number
+Array.from(Array(maxlength).keys())
+[...Array(10).keys()];		// spread operator
+[...Array(10).keys()].map(x => x+N);	//start from N
+
+///Array pop cut slice splice
+
+// recursive
+let rec = (f)=> (...args)=> f( (...args)=>rec(f)(...args), ...args )
+rec( (f,n) => (n>1 ? n*f(n-1) : n) )(6)

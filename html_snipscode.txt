@@ -1,2 +1,12 @@
 //HTML Validation
 <input id="demo" type="number" min="5" max="10" step="1"/>
+
+///
+
+var data = {
+    id: 1,
+    text: 'Barn owl'
+};
+
+var newOption = new Option(data.text, data.id, false, false);
+$('#mySelect2').append(newOption).trigger('change');

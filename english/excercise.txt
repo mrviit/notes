@@ -1,0 +1,4 @@
+The handball team played extremely badly last Wednesday.
+(Trạng từ extremely bổ nghĩa cho trạng từ badly và trạng từ badly bổ nghĩa cho động từ played.)
+-> phan tich tu loai cua last? (tinh tu cua Wednesday)
+"last Wednesday" -> NP -> O

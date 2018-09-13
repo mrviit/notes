@@ -57,3 +57,31 @@ vscode.window.showOpenDialog({
             if (!uris || !uris[0]) { return; }
             console.log(`uris: ${uris[0].fsPath}`);
         });
+		
+/// export api
+export function activate(context: vscode.ExtensionContext) {
+    let api = {
+        sum(a, b) {
+            return a + b;
+        },
+        mul(a, b) {
+            return a * b;
+        }
+    };
+    // 'export' public api-surface
+    return api;
+}
+
+And another extension can then retrieve and use that API via a getExtension() call:
+
+let mathExt = extensions.getExtension('genius.math');
+let importedApi = mathExt.exports;
+
+console.log(importedApi.mul(42, 1));
+
+///
+// fs.writeFile(`${__dirname}/../index_raw.html`, content, (err: Error) => {
+                //     if (err) {
+                //         vscode.window.showErrorMessage("Cannot save index_raw: " + err);
+                //     }
+                // });

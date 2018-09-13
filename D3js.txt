@@ -1,0 +1,45 @@
+d3.selectAll("section")
+    .attr("class", "special")
+  .append("div")
+    .html("Hello, world!")
+	.style("color", "black")
+    .style("background-color", "white");
+	
+///D3’s scales specify a mapping from data space (domain) to display space (range):
+var x = d3.scale.linear()	//scaleLinear()
+    .domain([0, d3.max(data)])
+    .range([0, 420]);
+	
+///
+var x = d3.scale.ordinal()
+    .domain(["A", "B", "C", "D", "E", "F"])
+    .range([0, 1, 2, 3, 4, 5]);
+//The result of x("A") is 0, x("B") is 1
+
+var x = d3.scale.ordinal()
+    .domain(["A", "B", "C", "D", "E", "F"])
+    .rangeBands([0, width]);	// rangePoints
+	
+///
+d3.select(".myclass").classed("myanotherclass", true);	//false
+d3.select(".myclass").classed("myanotherclass");	//Check class
+
+///
+selection.attr("class", (d) => d.isFoo ? "foo" : "");	// <<== correct
+selection.attr("class", (d) => d3.select(this).attr("class") + " node" + d.id);
+selection.classed("foo", (d) => d.isFoo)
+selection.classed((d) => "node" + d.id, true);	//cannot pass a function to classed()
+selection.attr("class", (d) => d3.select(this).attr("class") + " node" + d.id);
+
+///
+d3.selectAll("circle").on("mouseover", function() {
+        d3.select(this).attr("fill", "maroon")
+    })
+    .on("mouseout", function() {
+        d3.select(this).attr("fill", "seagreen")
+    })
+	
+///
+.on("mouseover", (d, i, nodes) => { d3.select(nodes[i]); });
+~
+.on("mouseover",()=>{d3.select(d3.event.target);})
