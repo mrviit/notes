@@ -36,3 +36,37 @@ const glob = require('glob');
 glob(__dirname + '/**/*.html', {}, (err, files)=>{
   console.log(files)
 })
+
+
+////////////VSCode new project	https://electronjs.org/docs/tutorial/first-app
+npm install -g express-generator		// 	npm install --save-dev electron
+
+express myExpressApp --view pug --git
+cd myExpressApp
+npm install
+SET DEBUG=myexpressapp:* & npm start
+
+///nodejs, electron
+
+npm init
+
+/// run
+node .
+electron .
+npm start
+
+// add jquery
+npm install jquery --save
+<script>window.$ = window.jQuery = require('jquery');</script>
+let $ = require("jquery")
+
+/// remove node_modules folder
+npm install rimraf -g
+rimraf node_modules
+
+//FIND THE INSTALLED VERSION OF AN NPM PACKAGE
+npm list
+npm list -g
+npm list --depth=0
+npm list codeceptjs
+npm view codeceptjs version
