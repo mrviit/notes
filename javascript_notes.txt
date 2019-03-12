@@ -140,3 +140,22 @@ Array.from(Array(maxlength).keys())
 // recursive
 let rec = (f)=> (...args)=> f( (...args)=>rec(f)(...args), ...args )
 rec( (f,n) => (n>1 ? n*f(n-1) : n) )(6)
+
+////Mandatory Parameter Shorthand
+function foo(bar) {
+  if(bar === undefined) {
+    throw new Error('Missing parameter!');
+  }
+  return bar;
+}
+Shorthand:
+
+mandatory = () => {
+  throw new Error('Missing parameter!');
+}
+
+foo = (bar = mandatory()) => {
+  return bar;
+}
+
+/////
