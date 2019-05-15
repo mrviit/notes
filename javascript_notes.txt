@@ -179,3 +179,6 @@ async function maiin() {
 
 maiin();
 /////
+<script>
+    System.import('main.ts').catch(function(err){ console.error(err); });
+    </script>

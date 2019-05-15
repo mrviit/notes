@@ -70,3 +70,17 @@ npm list -g
 npm list --depth=0
 npm list codeceptjs
 npm view codeceptjs version
+
+///How global error handling works  https://www.bugsnag.com/blog/anatomy-of-a-javascript-error
+In a Node environment, there is no window object so the equivalent approach is to use process.on('unhandledException, callback).
+
+With the advent of ES2015, we were given first class support for Promises in JavaScript which greatly improves the clarity of asynchronous code. One drawback of Promises is they have the tendency to swallow errors that occur in their .then() method. If there is an error generated in this method it will never bubble up to the global error handler and thus will not be reported to Bugsnag.
+
+fetch('https://my-api.endpoint')
+.then((response) => {
+  response.thisMethodDoesNotExist()  // this error will be swallowed
+
+  doSomethingElse()  // this code will never run
+})
+
+This is why it’s always best practice to add a catch statement for all promise chains so any errors can be handled.
