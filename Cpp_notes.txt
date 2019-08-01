@@ -11,3 +11,7 @@ using validateFcn = bool(*)(int, int); // type alias In C++11
 #include <functional>
 bool validate(int x, int y, std::function<bool(int, int)> fcn);
 // If there are no parameters, the parentheses can be left empty
+
+
+/////
+Visual Leak Detector	An open-source memory leak detection system for Visual C++.

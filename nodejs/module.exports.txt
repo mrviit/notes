@@ -1,0 +1,19 @@
+Assigning to exports will not modify module, must use module.exports
+
+The node.js environment roughly follows the CommonJS Modules/1.1 proposal, which specifies that the environment should inject three locally-scoped variables: exports, require, and module.
+
+In CommonJS, a module exports values by assigning those values to properties on the exports object. The require function imports other modules' exports by their module ids. The module object provides meta-data about the current module, such as its id and uri.
+
+Notice, however, that the node.js code snippet above doesn't use an exports object. Instead, it assigns a value to module.exports. module.exports is a node.js extension that allows developers to export non-object values.
+
+Note: The CommonJS proposal does not specify module.exports; it is a node.js extension to better support existing patterns. Since node.js supports exports, as well, node.js is compatible with strictly-conforming CommonJS modules.
+
+///
+
+When a file is run directly from Node.js, require.main is set to its module. That means that it is possible to determine whether a file has been run directly by testing require.main === module.
+
+Because module provides a filename property (normally equivalent to __filename), the entry point of the current application can be obtained by checking require.main.filename.
+
+///require
+When a file is run directly from Node.js, require.main is set to its module
+// require.main === module

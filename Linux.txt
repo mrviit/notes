@@ -1,0 +1,2 @@
+dhclient	// turn on network
+yum -y groups install "GNOME Desktop"

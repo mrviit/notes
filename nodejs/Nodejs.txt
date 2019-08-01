@@ -1,0 +1,86 @@
+const renameJsonData = JSON.parse(renameJsonDocContent);
+
+var jsonConfigContent = require('../config.json');
+
+////https://nodejs.org/api/path.html#path_path_basename_path_ext
+path.basename
+path.delimiter
+path.dirname
+path.extname
+
+
+////
+fs.readdir
+fs.stat
+
+fs.readdir(path, function(err, items) {
+    console.log(items);
+
+    for (var i=0; i<items.length; i++) {
+        console.log(items[i]);
+    }
+});
+
+fs.readdir(testFolder, (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+})
+
+fs.lstatSync(path_string).isDirectory();	// lstat
+let isDirExists = fs.existsSync(dirPath) && fs.lstatSync(dirPath).isDirectory();
+
+///
+const glob = require('glob');
+
+glob(__dirname + '/**/*.html', {}, (err, files)=>{
+  console.log(files)
+})
+
+
+////////////VSCode new project	https://electronjs.org/docs/tutorial/first-app
+npm install -g express-generator		// 	npm install --save-dev electron
+
+express myExpressApp --view pug --git
+cd myExpressApp
+npm install
+SET DEBUG=myexpressapp:* & npm start
+
+///nodejs, electron
+
+npm init
+
+/// run
+node .
+electron .
+npm start
+
+// add jquery
+npm install jquery --save
+<script>window.$ = window.jQuery = require('jquery');</script>
+let $ = require("jquery")
+
+/// remove node_modules folder
+npm install rimraf -g
+rimraf node_modules
+
+//FIND THE INSTALLED VERSION OF AN NPM PACKAGE
+npm list
+npm list -g
+npm list --depth=0
+npm list codeceptjs
+npm view codeceptjs version
+
+///How global error handling works  https://www.bugsnag.com/blog/anatomy-of-a-javascript-error
+In a Node environment, there is no window object so the equivalent approach is to use process.on('unhandledException, callback).
+
+With the advent of ES2015, we were given first class support for Promises in JavaScript which greatly improves the clarity of asynchronous code. One drawback of Promises is they have the tendency to swallow errors that occur in their .then() method. If there is an error generated in this method it will never bubble up to the global error handler and thus will not be reported to Bugsnag.
+
+fetch('https://my-api.endpoint')
+.then((response) => {
+  response.thisMethodDoesNotExist()  // this error will be swallowed
+
+  doSomethingElse()  // this code will never run
+})
+
+This is why it’s always best practice to add a catch statement for all promise chains so any errors can be handled.
