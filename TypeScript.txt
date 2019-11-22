@@ -1,3 +1,16 @@
+// start
+npm init
+npm i typescript ts-node
+tsc --init
+vscode/tasks.json: "command": "tsc" -> "command": "D:\\Projects\\TS\\Tutorial\\node_modules\\.bin\\tsc"
+tsconfig.json
+"types": [
+      "node"
+    ]
+
+
+
+////
 export default function to(promise) {
    return promise.then(data => {
       return [null, data];
@@ -7,3 +20,6 @@ export default function to(promise) {
 
 [err, user] = await to(UserModel.findById(1));
      if(!user) return cb('No user found');
+	 
+	 
+	 
