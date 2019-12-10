@@ -9,3 +9,6 @@ As example, if you add the argument -Dmy.product.loglevel=INFO,
 you can get the "INFO" value with System.getProperties("my.product.loglevel").
 
 If you are developing Eclipse RCP applications, the launch configuration is created based on the product configuration file.
+
+// Error: cannot launch eclipse ide  // Eclipse shows splash screen and closes. How to fix?
+=> wrong info in JAVA_TOOL_OPTIONS_, path, loader, ...

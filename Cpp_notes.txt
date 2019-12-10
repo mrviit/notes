@@ -15,3 +15,25 @@ bool validate(int x, int y, std::function<bool(int, int)> fcn);
 
 /////
 Visual Leak Detector	An open-source memory leak detection system for Visual C++.
+
+/// faster build https://devblogs.microsoft.com/cppblog/recommendations-to-speed-c-builds-in-visual-studio/
+Specific recommendations include:
+
+DO USE PCH for projects
+DO include commonly used system, runtime and third party headers in PCH
+DO include rarely changing project specific headers in PCH
+DO NOT include headers that change frequently
+DO audit PCH regularly to keep it up to date with product churn
+DO USE /MP
+DO Remove /Gm in favor of /MP
+DO resolve conflict with #import and use /MP
+DO USE linker switch /incremental
+DO USE linker switch /debug:fastlink
+DO consider using a third party build accelerator
+
+/// tools
+Cppcheck
+StopOnFirstBuildError https://marketplace.visualstudio.com/items?itemName=EinarEgilsson.StopOnFirstBuildError
+ReSharper C++ https://marketplace.visualstudio.com/items?itemName=JetBrains.ReSharperC
+VSColorOutput 
+VcpkgSrv
