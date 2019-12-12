@@ -1,0 +1,1 @@
+Gondola Test Builder tool which helps user to record and build the test cases with Page Object model. All alternatives are welcome too
