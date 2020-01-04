@@ -36,3 +36,9 @@ git commit -m "first commit"
 git remote add origin https://github.com/mrviit/notes.git
 git push -u origin master
 
+
+///Find Git Repository URL
+git config --get remote.origin.url
+git remote get-url origin
+git remote show origin
+git remote -v
