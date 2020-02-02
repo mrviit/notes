@@ -1,0 +1,3 @@
+/// Qt Quick Layouts http://doc.qt.io/qt-5/qtquicklayouts-overview.html
+
+Qt.platform.os === "osx"

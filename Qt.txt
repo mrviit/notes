@@ -1,0 +1,2 @@
+QObject::connect(d->timer, &QTimer::timeout,
+                 std::bind(&MyClassPrivate::member, d));
