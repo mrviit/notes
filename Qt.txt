@@ -1,2 +1,9 @@
 QObject::connect(d->timer, &QTimer::timeout,
                  std::bind(&MyClassPrivate::member, d));
+				 
+
+////
+There are utility classes in Qt to handle the lifetime of QObjects automatically, like QScopedPointer and QObjectCleanupHandler. If you have some part of the application using Qt classes but no UI tightly related to that, you can surely find a way to leverage those as members of a class not based on QObject. It is often stated as a criticism to Qt, that you can’t put QObjects in containers or smart pointers. Often the alternatives do exist and can be as good, if not better (but admittedly this is a matter of taste).
+
+////
+https://kipalog.com/posts/Reentrant-va-Thread-safe
