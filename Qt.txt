@@ -7,3 +7,23 @@ There are utility classes in Qt to handle the lifetime of QObjects automatically
 
 ////
 https://kipalog.com/posts/Reentrant-va-Thread-safe
+
+//////////////
+
+I recommend to use Qt because:
+
+It's cross-platform and and covers wide range of operating systems (including mobile)
+Writing in C++ gives you gives you the opportunity to use libraries like the STL, Boost, etc;
+Using C++ gives you the benefit of running your app at high speed
+It is opensource and has a fast speed in getting better
+It has the a nice GUI designer and a very capable IDE (Qt Creator)
+The API design is excellent and easy to use
+It has a great documentation which is easy to read
+It has the Qt translation system which enables you to have a multilingual app
+The GUI layout system where the widgets resize themselves according to a layout makes everything much easier
+The QML gives you the power to create fantastic GUI with great graphics and animations
+It has great support for networking and connectivity(socket, SSL, www, IPC, ...)
+It has QTestLib for testing the code
+It has many language binding if you don't want to use C++
+
+////////////

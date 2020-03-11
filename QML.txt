@@ -1,3 +1,44 @@
 /// Qt Quick Layouts http://doc.qt.io/qt-5/qtquicklayouts-overview.html
 
 Qt.platform.os === "osx"
+
+/// Good, basic, fuondamental docs
+https://doc.qt.io/qt-5/qtqml-documents-topic.html
+https://doc.qt.io/qt-5/qtqml-documents-definetypes.html
+https://doc.qt.io/qt-5/qtqml-documents-scope.html
+
+https://doc.qt.io/qt-5/qtqml-javascript-topic.html
+https://doc.qt.io/qt-5/qtqml-javascript-expressions.html
+
+https://doc.qt.io/qt-5/qtqml-syntax-objectattributes.html
+https://doc.qt.io/qt-5/qtqml-syntax-imports.html
+https://doc.qt.io/qt-5/qtqml-syntax-propertybinding.html
+https://doc.qt.io/qt-5/qtqml-syntax-signals.html
+
+https://doc.qt.io/qt-5/qtqml-cppintegration-exposecppattributes.html
+https://doc.qt.io/qt-5/qtqml-cppintegration-definetypes.html
+https://doc.qt.io/qt-5/qtqml-cppintegration-data.html
+
+https://doc.qt.io/qt-5/qtqml-typesystem-objecttypes.html
+
+https://doc.qt.io/qt-5/qtqml-tutorials-extending-qml-example.html
+
+////
+In QML, a user interface is specified as a tree of objects with properties. 
+
+In QML concept, all reusable things are called components.
+A component defined inline does not work after explicitly loaded by a loader.
+
+A QML document is a string which conforms to QML document syntax. A document defines a QML object type. A document is generally loaded from a ".qml" file stored either locally or remotely, but can be constructed manually in code. An instance of the object type defined by a document may be created using a Component in QML code, or a QQmlComponent in C++.
+A QML document consists of two sections: the imports section, and the object declaration section. The imports section in a document contains import statements that define which QML object types and JavaScript resources the document is able to use. The object declaration section defines the object tree to be created when instantiating the object type defined by the document.
+
+Each QML component is instantiated in a QQmlContext. QQmlContext's are essential for passing data to QML components. In QML, contexts are arranged hierarchically and this hierarchy is managed by the QQmlEngine.
+
+When running QML, it is being executed in a run-time environment. The run-time is implemented in C++ in the QtQml module. It consists of an engine, responsible for the execution of QML, contexts, holding the properties accessible for each component, and components, the instantiated QML elements.
+
+Each .qml file of your project defines a reusable QML Component. The specified root QML Item determines the base component, which your new item extends. 
+
+//////////////
+The reason QT is not widely accepted is that it is written in C++. C++ is hard to work with for inexperienced developers who are the majority and they use Java, Python, HTML5, etc… C++ bugs are very hard to find if you don’t know what stack is, if you don’t know how to debug, if you write “dirty” code. This is why QT isn’t popular among them. But QT is extremely powerful framework and it is the most portable. You can write an app and run it on any desktop , any mobile platform. The most promising technology in QT released recently is QT Quick. With QML you can write applications like in HTML5 but extend it with C++ objects anytime easily. This gives you great amount of power if you want to design code for performance (like in games for example) or for size while removing the danger of direct C++ code. So, don’t expect QT will be popular among the crowd, it wont, crowd are not the professionals and therefore they don’t lead the industry. QT is used to deliver fast and efficient code, it is used by large companies to bring high quality apps to the user, and those (companies) are the minority, but they produce usually the most wanted apps. Think of QT apps as a framework for killer apps
+
+/////////////
