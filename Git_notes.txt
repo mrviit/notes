@@ -3,7 +3,17 @@ git rev-list --all | (
         git grep -F 'SWT.F2' $revision
     done
 )
-
+/// revert , reset commit
+git revert <mã_hash_commit>
+git reset --hard <mã_hash_commit>
+git reset : sẽ thay đổi HEAD (thay đổi mới nhất ở branch) về các commit khác
+git reset --hard: với option --hard, sau khi chuyển về các commit khác, các commit sau đó sẽ bị mất. Tuy nhiên có thể sử dụnggit reflog để khôi phục lại.
+git reset --soft: tương tụ nó sẽ yêu cầu Git chuyển về các commit khác, nhưng trạng thái staged và tất cả sự thay đổi của file sẽ được giữ nguyên.
+///
+///
+Cherry pick được dùng để lấy một commit từ branch này và áp những thay đổi lên trên branch khác.
+Để sử dụng cherry pick, bạn git checkout qua branch cần apply commit vào và thực thi lệnh: $ git cherry-pick <mã_hash_của_commit>.
+///
 ///
 
 git log foo.rb | grep "bar"
