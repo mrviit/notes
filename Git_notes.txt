@@ -52,3 +52,9 @@ git config --get remote.origin.url
 git remote get-url origin
 git remote show origin
 git remote -v
+
+///Error
+Cloning into 'xxx'...
+remote: HTTP Basic: Access denied
+fatal: Authentication failed for 'https://gitlab.com/xxxyyy.git/'
+=> git config --global--unset credential.helper
