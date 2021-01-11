@@ -8,3 +8,7 @@
 
 ///online tools
 https://www.draw.io/
+
+
+///
+https://docs.microsoft.com/en-us/sysinternals/downloads/listdlls
